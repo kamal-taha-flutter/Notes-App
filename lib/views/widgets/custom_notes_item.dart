@@ -34,7 +34,7 @@ class CustomNotesItem extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 14),
               child: IconButton(
                 onPressed: (){},
-                 icon: FaIcon(FontAwesomeIcons.trash,color: Colors.black,size: 28,)),
+                 icon: FaIcon(FontAwesomeIcons.trash,color: const Color.fromARGB(255, 226, 2, 2),size: 28,)),
             ),
           ),
           Padding(
