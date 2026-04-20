@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:notes_app/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/utils/app_constant.dart';
 import 'package:notes_app/views/notes_view.dart';
@@ -17,12 +19,17 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        textTheme: GoogleFonts.poppinsTextTheme(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context)=>AddNoteCubit()),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          textTheme: GoogleFonts.poppinsTextTheme(),
+        ),
+        home: NotesView(),
       ),
-      home: NotesView(),
     );
   }
 }
