@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 
 class CustomNotesItem extends StatelessWidget {
-  const CustomNotesItem({super.key});
-
+  const CustomNotesItem({super.key, required this.note});
+final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,7 +18,7 @@ class CustomNotesItem extends StatelessWidget {
         padding: EdgeInsets.only(top: 20,bottom: 20,left: 20,),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.orange,
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(16)
         ),
         child: Column(
@@ -25,14 +26,14 @@ class CustomNotesItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             ListTile(
-              title: Text('Flutter tips',style: TextStyle(
+              title: Text(note.title,style: TextStyle(
                 color: Colors.black,
                 fontSize: 26,
                 fontWeight: FontWeight.bold
               ),),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 20,bottom: 20),
-                child: Text('Build your Career with Kamal Taha',style: TextStyle(
+                child: Text(note.subTitle,style: TextStyle(
                   fontSize: 20,
                   // ignore: deprecated_member_use
                   color: Colors.black.withOpacity(.5)
@@ -47,7 +48,7 @@ class CustomNotesItem extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 24),
-              child: Text('May 21,2026',style: TextStyle(
+              child: Text(note.date,style: TextStyle(
                 fontSize: 16,
                 // ignore: deprecated_member_use
                 color: Colors.black.withOpacity(.4)
