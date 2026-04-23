@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 
@@ -42,7 +44,10 @@ final NoteModel note;
               trailing: Padding(
                 padding: const EdgeInsets.only(bottom: 14),
                 child: IconButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    note.delete();
+                     context.read<NotesCubit>().fetchAllNotes();
+                  },
                    icon: FaIcon(FontAwesomeIcons.trash,color: const Color.fromARGB(255, 226, 2, 2),size: 28,)),
               ),
             ),
